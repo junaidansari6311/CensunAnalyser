@@ -37,8 +37,9 @@ public class CensusAnalyserTest {
     public void givenIndianStateCSV_ShouldReturnExactCount() {
         try {
             CensusAnalyser censusAnalyser = new CensusAnalyser();
+            censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
             int noOfStateCode = censusAnalyser.loadIndianStateCode(INDIAN_STATE_CSV_FILE_PATH);
-            Assert.assertEquals(37, noOfStateCode);
+            Assert.assertEquals(29, noOfStateCode);
         } catch (CensusAnalyserException e) {
             System.out.println(e.getMessage());
         }
