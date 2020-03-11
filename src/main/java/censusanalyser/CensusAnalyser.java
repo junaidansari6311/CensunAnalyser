@@ -18,27 +18,17 @@ public class CensusAnalyser {
     private List<CensusDTO> censusList ;
     private Map<String, CensusDTO> censusMap;
 
-    public CensusAnalyser(){
+    public CensusAnalyser() {
         censusList = new ArrayList<>();
         censusMap = new HashMap<>();
     }
 
-    public int loadIndiaCensusData(String... csvFilePath) {
-        censusMap = new CensusLoader().loadCensusData(IndiaCensusCSV.class,csvFilePath);
-        return censusMap.size();
-    }
-
-    public int loadUSCensusData(String... csvFilePath) {
-        censusMap = new CensusLoader().loadCensusData(USCensusCSV.class,csvFilePath);
-        return censusMap.size();
-    }
-
     public int loadCensusData(Country country, String... csvFilePath) {
-        censusMap = new CensusLoader().loadCensusData(country,csvFilePath);
+        censusMap = CensusAdapterFactory.getCensusAdapter(country, csvFilePath);
         return censusMap.size();
     }
 
-    public String getStateWiseSortedCensusData() {
+    public String getStateWiseSortedCensusData() throws CensusAnalyserException{
         censusList = censusMap.values().stream().collect(Collectors.toList());
         if (censusList == null || censusList.size() == 0){
             throw new CensusAnalyserException("No Census Data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
