@@ -11,6 +11,10 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class CensusAnalyser {
+
+    public enum Country{
+        INDIA,US;
+    }
     private List<CensusDTO> censusList ;
     private Map<String, CensusDTO> censusMap;
 
@@ -26,6 +30,11 @@ public class CensusAnalyser {
 
     public int loadUSCensusData(String... csvFilePath) {
         censusMap = new CensusLoader().loadCensusData(USCensusCSV.class,csvFilePath);
+        return censusMap.size();
+    }
+
+    public int loadCensusData(Country country, String... csvFilePath) {
+        censusMap = new CensusLoader().loadCensusData(country,csvFilePath);
         return censusMap.size();
     }
 
