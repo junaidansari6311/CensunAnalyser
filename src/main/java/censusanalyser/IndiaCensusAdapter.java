@@ -22,7 +22,7 @@ public class IndiaCensusAdapter extends CensusAdapter {
         return censusMap;
     }
 
-    private int loadIndiaStateCode(Map<String, CensusDTO> censusMap, String csvFilePath) {
+    public int loadIndiaStateCode(Map<String, CensusDTO> censusMap, String csvFilePath) {
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
             ICSVBuilder icsvBuilder = CSVBuilderFactory.createBuilder();
             Iterator<IndiaStateCodeCSV> stateCodeCSVIterator = icsvBuilder.

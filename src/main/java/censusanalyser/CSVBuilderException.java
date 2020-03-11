@@ -5,9 +5,9 @@ public class CSVBuilderException extends RuntimeException {
         UNABLE_TO_PARSE;
     }
 
-    ExceptionType type;
+    CSVBuilderException.ExceptionType type;
 
-    public CSVBuilderException(String message, ExceptionType type){
+    public CSVBuilderException(String message, ExceptionType type) {
         super(message);
         this.type = type;
     }

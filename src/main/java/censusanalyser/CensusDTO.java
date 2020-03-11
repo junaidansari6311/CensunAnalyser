@@ -8,15 +8,15 @@ public class CensusDTO {
     public double populationDensity;
     public String stateCode;
 
-    public CensusDTO(IndiaCensusCSV censusDTO) {
-        this.state = censusDTO.state;
-        this.population = censusDTO.population;
-        this.totalArea = censusDTO.areaInSqKm;
-        this.populationDensity = censusDTO.densityPerSqKm;
+    public CensusDTO(IndiaCensusCSV censusCSV) {
+        this.state = censusCSV.state;
+        this.population = censusCSV.population;
+        this.totalArea = censusCSV.totalArea;
+        this.populationDensity = censusCSV.populationDensity;
     }
     public CensusDTO(USCensusCSV censusCSV) {
         state = censusCSV.state;
-        stateCode = censusCSV.stateId;
+        stateCode = censusCSV.stateCode;
         population = censusCSV.population;
         totalArea = censusCSV.totalArea;
         populationDensity = censusCSV.populationDensity;
